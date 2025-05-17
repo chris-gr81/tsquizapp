@@ -128,6 +128,8 @@ function validate(answerId: string): void {
     alert("FALSCH");
     document.getElementById(answerId)?.classList.add("incorrect");
     document.getElementById(correctAnswer.id)?.classList.add("correct");
+  } else {
+    alert("Fehler im System. CorrectAnswer ist undefinde");
   }
 }
 
@@ -140,6 +142,8 @@ function showSolution(): void {
   );
   if (correctAnswer) {
     document.getElementById(correctAnswer.id)?.classList.add("correct");
+  } else {
+    alert("Fehler im System. CorrectAnswer ist undefinde");
   }
 }
 

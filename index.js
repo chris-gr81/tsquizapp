@@ -116,6 +116,9 @@ function validate(answerId) {
         (_b = document.getElementById(answerId)) === null || _b === void 0 ? void 0 : _b.classList.add("incorrect");
         (_c = document.getElementById(correctAnswer.id)) === null || _c === void 0 ? void 0 : _c.classList.add("correct");
     }
+    else {
+        alert("Fehler im System. CorrectAnswer ist undefinde");
+    }
 }
 // TODO 14: Lösung anzeigen
 function showSolution() {
@@ -125,6 +128,9 @@ function showSolution() {
     });
     if (correctAnswer) {
         (_a = document.getElementById(correctAnswer.id)) === null || _a === void 0 ? void 0 : _a.classList.add("correct");
+    }
+    else {
+        alert("Fehler im System. CorrectAnswer ist undefinde");
     }
 }
 window.addEventListener("DOMContentLoaded", () => {
