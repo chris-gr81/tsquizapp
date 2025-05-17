@@ -130,3 +130,4 @@ window.addEventListener("DOMContentLoaded", () => {
         .getElementById("showNextQuestion")
         .addEventListener("click", nextQuestion);
 });
+export {};

@@ -1,3 +1,5 @@
+import { Questions, Question, Answer } from "./types";
+
 // TODO 10: Fragen Struktur
 const questions = [
   {
