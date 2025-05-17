@@ -57,8 +57,9 @@ let currentQuestion = questions[0];
 let currentQuestionPointer = -1;
 // TODO 11: Frage Rendern
 function renderQuestion(question) {
+    var _a;
     const questionDiv = document.createElement("div");
-    questionDiv.id = question.id;
+    questionDiv.id = question.id.toString();
     questionDiv.classList.add("question");
     const questionTitle = document.createElement("div");
     questionTitle.classList.add("question-title");
@@ -82,12 +83,13 @@ function renderQuestion(question) {
     }
     questionDiv.appendChild(questionTitle);
     questionDiv.appendChild(questionAnswers);
-    document.getElementById("display-question").appendChild(questionDiv);
+    (_a = document.getElementById("display-question")) === null || _a === void 0 ? void 0 : _a.appendChild(questionDiv);
 }
 // TODO 12: "Next" Logik
 function nextQuestion() {
+    var _a;
     if (currentQuestion) {
-        document.getElementById(String(currentQuestion.id)).remove();
+        (_a = document.getElementById(String(currentQuestion.id))) === null || _a === void 0 ? void 0 : _a.remove();
     }
     if (currentQuestionPointer + 1 < questions.length) {
         currentQuestionPointer++;
@@ -101,33 +103,36 @@ function nextQuestion() {
 }
 // TODO 13: Frage beantworten Logik
 function validate(answerId) {
+    var _a, _b, _c;
     const correctAnswer = currentQuestion.answers.find((answer) => {
         return answer.correct;
     });
-    if (correctAnswer.id === answerId) {
+    if (correctAnswer && correctAnswer.id === answerId) {
         alert("RICHTIG");
-        document.getElementById(answerId).classList.add("correct");
+        (_a = document.getElementById(answerId)) === null || _a === void 0 ? void 0 : _a.classList.add("correct");
     }
-    else {
+    else if (correctAnswer) {
         alert("FALSCH");
-        document.getElementById(answerId).classList.add("incorrect");
-        document.getElementById(correctAnswer.id).classList.add("correct");
+        (_b = document.getElementById(answerId)) === null || _b === void 0 ? void 0 : _b.classList.add("incorrect");
+        (_c = document.getElementById(correctAnswer.id)) === null || _c === void 0 ? void 0 : _c.classList.add("correct");
     }
 }
 // TODO 14: Lösung anzeigen
 function showSolution() {
+    var _a;
     const correctAnswer = currentQuestion.answers.find((answer) => {
         return answer.correct;
     });
-    document.getElementById(correctAnswer.id).classList.add("correct");
+    if (correctAnswer) {
+        (_a = document.getElementById(correctAnswer.id)) === null || _a === void 0 ? void 0 : _a.classList.add("correct");
+    }
 }
 window.addEventListener("DOMContentLoaded", () => {
+    var _a, _b;
     renderQuestion(currentQuestion);
-    document
-        .getElementById("showSolution")
-        .addEventListener("click", showSolution);
-    document
-        .getElementById("showNextQuestion")
-        .addEventListener("click", nextQuestion);
+    (_a = document
+        .getElementById("showSolution")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", showSolution);
+    (_b = document
+        .getElementById("showNextQuestion")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", nextQuestion);
 });
 export {};
